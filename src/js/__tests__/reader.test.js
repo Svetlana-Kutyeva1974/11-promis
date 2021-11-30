@@ -1,29 +1,26 @@
-import Daemon from '../Daemon.js';
-import Character from '../Character.js';
-
-test('string length name error', () => {
-  const result = new Daemon('hero', 'Daemon');
-  expect(result.attack).toBe(8);
+import read from '../reader.js';
+/*
+test('test возврат buffer из getbuffer', () => {
+  const data = '{"data":{"user":{"id":1,"name":"Hitman","level":10}}}';
+  const buffer = new ArrayBuffer(data.length * 2);
+  const getbuf = read();
+  expect(getbuf).toEqual(buffer);
 });
 
-test('string length name error', () => {
-  const result0 = new Daemon('hero', 'Daemon');
-  expect(result0.defence).toBe(Character.TYPES[`${result0.type}`][1]);
+test('test return getbuffer', () => {
+  const data = '{"data":{"user":{"id":1,"name":"Hitman","level":10}}}';
+  const buffer = new ArrayBuffer(data.length * 2);
+  read();
+  expect(Promise.resolve().then(buffer)).toEqual(buffer);
 });
-
-test('string length name error', () => {
-  const result1 = new Daemon('hero', 'Daemon');
-  const result2 = new Character('hero', 'Daemon');
-  expect(result2).not.toMatchObject(result1);
-});
-
-test('Проверка гетера stoned', () => {
-  const result1 = new Daemon('hero', 'Daemon');
-  // eslint no-underscore-dangle: "off"
-  expect(result1.stoned).toBe(3);
-});
-
-test('Проверка гетера число клеток', () => {
-  const result1 = new Daemon('hero', 'Daemon');
-  expect(result1.number).toBe(3);
+*/
+test('the data is buffer', () => {
+  /*
+  const data1 = '{"data":{"user":{"id":1,"name":"Hitman","level":10}}}';
+  */
+  const data1 = '{"id":9,"created":1546300800,"userInfo":{"id":1,"name":"Hitman","level":10,"points":2000}}';
+  const buffer = new ArrayBuffer(data1.length * 2);
+  return read().then((data) => {
+    expect(data).toEqual(buffer);
+  });
 });

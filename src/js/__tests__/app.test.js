@@ -1,11 +1,7 @@
-import Daemon from '../Daemon.js';
-import Magician from '../Magician.js';
+import GameSavingLoader from '../GameSavingLoader.js';
 
-test('test преобразование в массив', () => {
-  /*
-  expect(team.toArray()).toStrictEqual([...team.members]);
-  */
-  const p2 = new Daemon('hero1', 'Daemon');
-  const p3 = new Magician('hero2', 'Magician');
-  console.log(p3, p2);
+test('the data is buffer', () => {
+  GameSavingLoader.load().then((saving) => {
+    expect(saving).toMatch(/{"id":9,"created":1546300800,"userInfo":{"id":1,"name":"Hitman","level":10,"points":2000}}/);
+  });
 });
